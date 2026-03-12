@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_patrimonial_property_user,patrimonial.property.user,model_patrimonial_property,base.group_user,1,1,1,0
+access_patrimonial_property_manager,patrimonial.property.manager,model_patrimonial_property,base.group_system,1,1,1,1
+access_property_maintenance_user,property.maintenance.user,model_property_maintenance,base.group_user,1,1,1,0
+access_property_maintenance_manager,property.maintenance.manager,model_property_maintenance,base.group_system,1,1,1,1

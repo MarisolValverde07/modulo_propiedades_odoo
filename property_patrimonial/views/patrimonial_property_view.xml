@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista Lista -->
+    <record id="view_patrimonial_property_list" model="ir.ui.view">
+        <field name="name">patrimonial.property.list</field>
+        <field name="model">patrimonial.property</field>
+        <field name="arch" type="xml">
+            <list string="Propiedades Patrimoniales">
+                <field name="expediente"/>
+                <field name="tipo"/>
+                <field name="distrito"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista Formulario -->
+    <record id="view_patrimonial_property_form" model="ir.ui.view">
+        <field name="name">patrimonial.property.form</field>
+        <field name="model">patrimonial.property</field>
+        <field name="arch" type="xml">
+            <form string="Propiedad Patrimonial">
+                <sheet>
+
+                    <!-- SMART BUTTON -->
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" name="action_view_maintenances" class="oe_stat_button" icon="fa-wrench">
+
+                            <field name="maintenance_count" widget="statinfo" string="Mantenimientos"/>
+                        </button>
+                    </div>
+
+                    <group string="Información General">
+                        <field name="expediente"/>
+                        <field name="tipo" widget="radio"/>
+                        <field name="distrito"/>
+                        <field name="descripcion" placeholder="Descripción de la propiedad..."/>
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- Vista de Búsqueda -->
+    <record id="view_patrimonial_property_search" model="ir.ui.view">
+        <field name="name">patrimonial.property.search</field>
+        <field name="model">patrimonial.property</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Propiedades">
+                <field name="expediente"/>
+                <field name="tipo"/>
+                <field name="distrito"/>
+
+                <!-- Filtros -->
+                <separator/>
+                <filter name="filter_zona_verde" string="Zonas Verdes" domain="[('tipo', '=', 'zona_verde')]"/>
+
+                <filter name="filter_inmueble" string="Inmuebles Patrimoniales" domain="[('tipo', '=', 'inmueble_patrimonial')]"/>
+
+                <!-- Agrupaciones -->
+                <separator/>
+                <filter name="group_by_distrito" string="Agrupar por Distrito" context="{'group_by': 'distrito'}"/>
+
+                <filter name="group_by_tipo" string="Agrupar por Tipo" context="{'group_by': 'tipo'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Acción -->
+    <record id="action_patrimonial_property" model="ir.actions.act_window">
+        <field name="name">Propiedades Patrimoniales</field>
+        <field name="res_model">patrimonial.property</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay propiedades registradas.
+            </p>
+            <p>
+                Crea una nueva propiedad patrimonial o zona verde.
+            </p>
+        </field>
+    </record>
+
+</odoo>

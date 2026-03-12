@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vista Lista -->
+    <record id="view_property_maintenance_list" model="ir.ui.view">
+        <field name="name">property.maintenance.list</field>
+        <field name="model">property.maintenance</field>
+        <field name="arch" type="xml">
+            <list string="Mantenimientos">
+                <field name="property_id"/>
+                <field name="fecha"/>
+                <field name="tipo_mantenimiento"/>
+                <field name="estado"/>
+                <field name="usuario_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista Formulario -->
+    <record id="view_property_maintenance_form" model="ir.ui.view">
+        <field name="name">property.maintenance.form</field>
+        <field name="model">property.maintenance</field>
+        <field name="arch" type="xml">
+            <form string="Mantenimiento">
+                <sheet>
+                    <group>
+                        <field name="property_id"/>
+                        <field name="fecha"/>
+                        <field name="tipo_mantenimiento"/>
+                        <field name="estado"/>
+                        <field name="usuario_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="observaciones"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de búsqueda -->
+    <record id="view_property_maintenance_search" model="ir.ui.view">
+        <field name="name">property.maintenance.search</field>
+        <field name="model">property.maintenance</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Mantenimientos">
+
+                <!-- Campos de búsqueda -->
+                <field name="property_id"/>
+                <field name="tipo_mantenimiento"/>
+                <field name="estado"/>
+                <field name="usuario_id"/>
+
+                <!-- Filtros -->
+                <separator/>
+                <filter name="filter_pendiente" string="Pendientes" domain="[('estado', '=', 'pendiente')]"/>
+
+                <filter name="filter_completado" string="Completados" domain="[('estado', '=', 'completado')]"/>
+
+                <!-- Agrupaciones -->
+                <separator/>
+                <filter name="group_by_property" string="Agrupar por Propiedad" context="{'group_by': 'property_id'}"/>
+
+                <filter name="group_by_estado" string="Agrupar por Estado" context="{'group_by': 'estado'}"/>
+
+                <filter name="group_by_tipo" string="Agrupar por Tipo" context="{'group_by': 'tipo_mantenimiento'}"/>
+
+            </search>
+        </field>
+    </record>
+
+
+    <!-- Acción -->
+    <record id="action_property_maintenance" model="ir.actions.act_window">
+        <field name="name">Mantenimientos</field>
+        <field name="res_model">property.maintenance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>
