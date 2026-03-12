@@ -32,7 +32,7 @@ Instalación
 
 ---
 
-1. Clonar el repositorio: git clone https://github.com/MarisolValverde07/muni_propiedades_odoo.git
+1. Clonar el repositorio: git clone https://github.com/MarisolValverde07/modulo_propiedades_odoo.git
 2. Copiar la carpeta property_patrimonial dentro del directorio de módulos personalizados (custom_addons o equivalente).
 3. Agregar la ruta en el archivo odoo.conf:addons_path = addons,custom_addons
 4. Reiniciar el servidor Odoo.
